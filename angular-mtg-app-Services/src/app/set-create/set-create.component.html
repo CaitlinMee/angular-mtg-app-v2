@@ -1,1 +1,32 @@
 <p>set-create works!</p>
+
+<div class="container custom-container">
+    <div class="col-md-12">
+        <h3 class="mb-3 text-center">Create Set</h3>
+
+        <div class="form-group">
+            <input type="text" [(ngModel)]="setDetails.name" class="form-control" placeholder="Set Name">
+        </div>
+
+        <div class="form-group">
+            <input type="text" [(ngModel)]="setDetails.block" class="form-control" placeholder="Set Block">
+        </div>
+
+        <div class="form-group">
+            <input type="text" [(ngModel)]="setDetails.code" class="form-control" placeholder="Set Code">
+        </div>
+
+        <div class="form-group">
+            <input type="text" [(ngModel)]="setDetails.releaseDate" class="form-control" placeholder="Set Release Date">
+        </div>
+
+        <div class="form-group">
+            <input type="text" [(ngModel)]="setDetails.expansion" class="form-control" placeholder="Set Expansion">
+        </div>
+
+        <div class="form-group">
+            <Button class="btn btn-success btn-lg btn-block" (click)="addSet()">Create Set</Button>
+        </div>
+    </div>
+</div>
+    

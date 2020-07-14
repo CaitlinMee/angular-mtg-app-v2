@@ -42,6 +42,15 @@ export class RestApiService {
     )
   }
 
+  // HttpClient API post() method => Create set
+  createSet(set): Observable<Set> {
+    return this.http.post<Set>(this.apiURL + '/v1/sets', JSON.stringify(set), this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+  }
+
   // HttpClient API put() method => Update set
   updateSet(code, set): Observable<Set> {
     return this.http.put<Set>(this.apiURL + '/v1/sets' + code, JSON.stringify(set), this.httpOptions)
