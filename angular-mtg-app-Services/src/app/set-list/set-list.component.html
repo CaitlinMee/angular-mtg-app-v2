@@ -5,3 +5,36 @@
     <p> There are not sets added yet!</p>
     <button class="btn btn-outline-primary" routerLink="/create-set"> Add Set </button>
 </div>
+
+<!-- Sets list tabl, it hides when there are no sets-->
+<div *ngIf="Set.length !== 0">
+    <h3 class="mb-3 text-center"> Sets </h3>
+</div>
+
+<div class="col-md-12">
+    <table class="table table-bordered">
+        <thread>
+            <tr>
+                <th scope="col"> Set Name</th>
+                <th scope="col"> Set Block</th>
+                <th scope="col"> Set Code</th>
+                <th scope="col"> Set Release Date</th>
+                <th scope="col"> Set Expansion</th>
+                <th scope="col"> Action</th>
+            </tr>
+        </thread>
+        <tbody>
+            <tr *ngIf="let set of Set">
+                <td>{{set.name}}</td>
+                <td>{{set.block}}</td>
+                <td>{{set.code}}</td>
+                <td>{{set.releaseDate}}</td>
+                <td>{{set.Expansion}}</td>
+                <td>
+                    <span class="edit" routerlink="/set-edit/{{set.code}}">Edit</span>
+                    <span class="delete" (click)="deleteSet(set.code)">Edit</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
