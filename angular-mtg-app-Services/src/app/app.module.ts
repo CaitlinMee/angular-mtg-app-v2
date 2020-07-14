@@ -1,13 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
 
+// HttpClient module for RESTful API
 import { HttpClientModule } from "@angular/common/http";
+
+// Routing module for router service
 import { AppRoutingModule } from './app-routing.module';
 
-import { AppComponent } from './app.component';
-import { SetsCreateComponent } from './sets-create/sets-create.component';
-import { SetsEditComponent } from './sets-edit/sets-edit.component';
-import { SetsListComponent } from './sets-list/sets-list.component';
+// Form Module
+import { FormsModule } from '@angular/forms';
+
 import { SetCreateComponent } from './set-create/set-create.component';
 import { SetEditComponent } from './set-edit/set-edit.component';
 import { SetListComponent } from './set-list/set-list.component';
@@ -15,9 +18,6 @@ import { SetListComponent } from './set-list/set-list.component';
 @NgModule({
   declarations: [
     AppComponent,
-    SetsCreateComponent,
-    SetsEditComponent,
-    SetsListComponent,
     SetCreateComponent,
     SetEditComponent,
     SetListComponent
@@ -26,6 +26,7 @@ import { SetListComponent } from './set-list/set-list.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
