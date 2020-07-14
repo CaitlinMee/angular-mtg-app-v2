@@ -1,1 +1,7 @@
 <p>set-list works!</p>
+
+<!-- Show it when the are not sets -->
+<div class="no-data text-center" *ngIf="Set.length == 0">
+    <p> There are not sets added yet!</p>
+    <button class="btn btn-outline-primary" routerLink="/create-set"> Add Set </button>
+</div>
