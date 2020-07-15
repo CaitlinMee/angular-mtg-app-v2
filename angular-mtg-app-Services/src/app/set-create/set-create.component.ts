@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { RestApiService } from '../shared/rest-api.service';
 
 @Component({
   selector: 'app-set-create',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SetCreateComponent implements OnInit {
 
-  constructor() { }
+  @Input() setDetails = {
+    name: '',
+    block: '',
+    code: 0,
+    releaseDate: '',
+    expansion: ''
+  }
+  display = 'none';
 
-  ngOnInit() {
+  set = [];
+
+  constructor(
+    public restApi: RestApiService,
+    public router: Router
+  ) {}
+
+  ngOnInit() {}
+
+  addSet(dataSet) {
+    this.restApi.createSet(this.setDetails).subscribe((data: {}) => {
+      this.router.navigate(['/set-list'])
+    })
   }
 
 }

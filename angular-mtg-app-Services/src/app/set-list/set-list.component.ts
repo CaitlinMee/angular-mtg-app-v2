@@ -7,11 +7,10 @@ import { RestApiService } from "../shared/rest-api.service";
   styleUrls: ['./set-list.component.css']
 })
 export class SetListComponent implements OnInit {
-
-  Set: any = [];
+  Set: {};
 
   constructor(
-    public restApi: RestApiService
+    private restApi: RestApiService
   ) { }
 
   ngOnInit() {

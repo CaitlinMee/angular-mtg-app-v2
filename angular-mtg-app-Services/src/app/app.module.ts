@@ -1,9 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
-import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { SetCreateComponent } from './set-create/set-create.component';
@@ -19,10 +20,11 @@ import { SetListComponent } from './set-list/set-list.component';
     SetListComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    CommonModule
+    BrowserModule,
+    CommonModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

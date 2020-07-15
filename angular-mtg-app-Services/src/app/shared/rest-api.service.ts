@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Set } from './set';
 import { Observable, throwError } from 'rxjs'; //handles asynchronous operations and errors in this demo app.
-import { retry, catchError } from 'rxjs/operators'; //handles asynchronous operations and errors in this demo app.
+import { retry, catchError, map } from 'rxjs/operators'; //handles asynchronous operations and errors in this demo app.
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import { retry, catchError } from 'rxjs/operators'; //handles asynchronous opera
 export class RestApiService {
 
   //Define API
-  apiURL = 'https://api.magicthegathering.io';
+  apiURL = 'https://api.magicthegathering.io/v1/sets';
 
   constructor(private http: HttpClient) { }
 
@@ -21,21 +21,33 @@ export class RestApiService {
   // Http Options
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'check postman'
+      'Content-Type': 'application/json; charset=utf-8',
+      'X-Request-Id': 'cc7afec7-3ccf-40ab-8294-ee694aa1cbbf',
+      'cf-request-id': '03f31cb9af00000a20ca28e200000001'
+
     })
   }
 
   // HttpClient API get() method => Fetch sets list
   getSets(): Observable<Set> {
-    return this.http.get<Set>(this.apiURL + '/v1/sets')
+    return this.http.get<Set>(this.apiURL)
+    .pipe(map((data: any) => data.result ),
+      retry(1),
+      catchError(this.handleError)
+    )
+  }
+  // HttpClient API get() method => Fetch set
+  getSet(code): Observable<Set> {
+    return this.http.get<Set>(this.apiURL + '/v1/sets' + code)
     .pipe(
       retry(1),
       catchError(this.handleError)
     )
   }
-  // HttpClient API get() method => Fetch employee
-  getSet(code): Observable<Set> {
-    return this.http.get<Set>(this.apiURL + '/v1/sets' + code)
+
+  // HttpClient API post() method => Create set
+  createSet(set): Observable<Set> {
+    return this.http.post<Set>(this.apiURL + '/v1/sets', JSON.stringify(set), this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.handleError)
