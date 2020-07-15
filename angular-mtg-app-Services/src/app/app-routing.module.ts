@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'create-sets'},
+  {path: '', pathMatch: 'full', redirectTo: 'sets-list'},
   {path: 'create-sets', component: SetCreateComponent},
   {path: 'sets-list', component: SetListComponent},
   {path: 'sets-edit/:id', component: SetEditComponent},
