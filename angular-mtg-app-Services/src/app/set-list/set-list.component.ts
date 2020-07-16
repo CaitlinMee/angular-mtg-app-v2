@@ -7,7 +7,7 @@ import { RestApiService } from "../shared/rest-api.service";
   styleUrls: ['./set-list.component.css']
 })
 export class SetListComponent implements OnInit {
-  Set: {};
+  Set: [];
 
   constructor(
     private restApi: RestApiService
@@ -19,8 +19,8 @@ export class SetListComponent implements OnInit {
 
   // Get sets list
   loadSets() {
-    return this.restApi.getSets().subscribe((data: {}) => {
-      this.Set = data;
+    return this.restApi.getSets().subscribe((data: any) => {
+      this.Set = data.sets;
     })
   }
 

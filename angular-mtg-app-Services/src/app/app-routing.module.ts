@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'sets-list'},
   {path: 'create-sets', component: SetCreateComponent},
   {path: 'sets-list', component: SetListComponent},
-  {path: 'sets-edit/:id', component: SetEditComponent},
+  {path: 'sets-edit/:code', component: SetEditComponent},
 ];
 
 @NgModule({

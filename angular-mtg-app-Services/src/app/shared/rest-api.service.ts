@@ -30,8 +30,8 @@ export class RestApiService {
 
   // HttpClient API get() method => Fetch sets list
   getSets(): Observable<Set> {
-    return this.http.get<Set>(this.apiURL)
-    .pipe(map((data: any) => data.result ),
+    return this.http.get<Set>(this.apiURL, this.httpOptions)
+    .pipe(
       retry(1),
       catchError(this.handleError)
     )

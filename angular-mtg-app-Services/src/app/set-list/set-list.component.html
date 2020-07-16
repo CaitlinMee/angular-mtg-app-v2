@@ -31,8 +31,8 @@
                 <td>{{set.releaseDate}}</td>
                 <td>{{set.Expansion}}</td>
                 <td>
-                    <span class="edit" routerlink="/set-edit/{{set.code}}">Edit</span>
-                    <span class="delete" (click)="deleteSet(set.code)">Edit</span>
+                    <span class="edit" routerlink="sets-edit/:code">Edit</span>
+                    <span class="delete" (click)="deleteSet(set.code)">Delete</span>
                 </td>
             </tr>
         </tbody>
