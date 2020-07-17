@@ -10,6 +10,13 @@ import { AppComponent } from './app.component';
 import { SetCreateComponent } from './set-create/set-create.component';
 import { SetEditComponent } from './set-edit/set-edit.component';
 import { SetListComponent } from './set-list/set-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+
 
 
 @NgModule({
@@ -24,7 +31,13 @@ import { SetListComponent } from './set-list/set-list.component';
     BrowserModule,
     CommonModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
+    MatSortModule, 
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

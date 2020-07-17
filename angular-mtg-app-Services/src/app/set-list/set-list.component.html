@@ -12,8 +12,9 @@
 </div>
 
 <div class="col-md-12">
-    <table class="table table-bordered">
-        <thead>
+    <mat-table #table [dataSource]="dataSource" matSort class="table table-bordered">
+        <ng-container mat></ng-container>
+ <!--      <thead>
             <tr>
                 <th scope="col"> Set Name</th>
                 <th scope="col"> Set Block</th>
@@ -35,6 +36,11 @@
                     <span class="delete" (click)="deleteSet(set.code)">Delete</span>
                 </td>
             </tr>
-        </tbody>
-    </table>
+            <mat-paginator [length]="100"
+                            [pageSize]="10"
+                            [pageSizeOptions]="[5, 10, 25, 100]"
+                            (page) = "Set = $event">
+            </mat-paginator>
+        </tbody>--> 
+    </mat-table>
 </div>
