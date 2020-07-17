@@ -1,9 +1,11 @@
-//https://stackoverflow.com/questions/50228138/cant-bind-to-datasource-since-it-isnt-a-known-property-of-table
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { RestApiService } from "../shared/rest-api.service";
+//import { RestApiService } from "../shared/rest-api.service";
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { DataSource } from '@angular/cdk/collections';
+import { BehaviorSubject } from 'rxjs';
+import { SetListService, SetsDataSource } from './set-list.service';
 
 @Component({
   selector: 'app-set-list',
@@ -12,37 +14,37 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class SetListComponent implements OnInit {
   Set: [];
-  dataSource = new MatTableDataSource([]);
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort, {}) sort: MatSort;
+  dataSource: SetsDataSource;
+  displayedColumns= [
+    'code', 'name', 'block',  'releaseDate', 'expansion'
+  ];
 
   constructor(
-    private restApi: RestApiService
-  ) { }
-
-  ngAfterViewInIt() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
+    private setlistService: SetListService
+    //private restApi: RestApiService
+  ) {}
 
   ngOnInit() {
-    this.loadSets()
+    this.dataSource = new SetsDataSource(this.setlistService);
+    this.dataSource.loadSets(1);
+
+    //this.loadSets()
   }
 
   // Get sets list
-  loadSets() {
-    return this.restApi.getSets().subscribe((data: any) => {
-      this.Set = data.sets;
-    })
-  }
+  //loadSets() {
+    //return this.restApi.getSets().subscribe((data: any) => {
+      //this.Set = data.sets;
+    //})
+  //}
 
   // Delete set
-  deleteSets(code) {
-    if (window.confirm('Are you sure you want to delete this set?')){
-      this.restApi.deleteSet(code).subscribe(date => {
-        this.loadSets()
-      })
-    }
-  }
+  //deleteSets(code) {
+    //if (window.confirm('Are you sure you want to delete this set?')){
+      //this.restApi.deleteSet(code).subscribe(date => {
+        //this.loadSets()
+      //})
+    //}
+  //}
 }
 

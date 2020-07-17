@@ -11,10 +11,31 @@
     <h3 class="mb-3 text-center"> Sets </h3>
 </div>
 
-<div class="col-md-12">
-    <mat-table #table [dataSource]="dataSource" matSort class="table table-bordered">
-        <ng-container mat></ng-container>
- <!--      <thead>
+<div>
+    <mat-table class="sets-table mat-elevation-z8" [dataSource]="dataSource">
+        <ng-container matColumnDef="code">
+            <div *matHeaderCellDef>Code</div>
+            <div *matCellDef="let set">{{set.code}}</div>
+        </ng-container>
+        <ng-container matColumnDef="name">
+            <div *matHeaderCellDef>Block</div>
+            <div *matCellDef="let set">{{set.block}}</div>
+        </ng-container>
+        <ng-container matColumnDef="block">
+            <div *matHeaderCellDef>Name</div>
+            <div *matCellDef="let set">{{set.name}}</div>
+        </ng-container>
+        <ng-container matColumnDef="expansion">
+            <div *matHeaderCellDef>Expansion</div>
+            <div class="duration-cell" *matCellDef="let set">{{set.expansion}}</div>
+        </ng-container>
+        <ng-container matColumnDef="releaseDate">
+            <div *matHeaderCellDef>Release Date</div>
+            <div *matCellDef="let set">{{set.releaseDate}}</div>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row, columns: displayedColumns"></mat-row>
+        <!--      <thead>
             <tr>
                 <th scope="col"> Set Name</th>
                 <th scope="col"> Set Block</th>
@@ -41,6 +62,6 @@
                             [pageSizeOptions]="[5, 10, 25, 100]"
                             (page) = "Set = $event">
             </mat-paginator>
-        </tbody>--> 
+        </tbody>-->
     </mat-table>
 </div>

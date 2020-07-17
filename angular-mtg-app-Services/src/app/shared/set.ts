@@ -1,7 +1,7 @@
 export class Set {
+    code: number;
     name: string;
     block: string;
-    code: number;
-    releaseDate: number;
     expansion: string;
+    releaseDate: number;
 }
