@@ -16,6 +16,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { SetListTableComponent } from './set-list-table/set-list-table.component';
 
 
 
@@ -24,7 +25,8 @@ import { MatTableModule } from '@angular/material/table';
     AppComponent,
     SetCreateComponent,
     SetEditComponent,
-    SetListComponent
+    SetListComponent,
+    SetListTableComponent
   ],
   imports: [
     AppRoutingModule,
